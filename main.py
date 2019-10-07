@@ -10,15 +10,20 @@ received = int(input("Enter the amount of phones received yesterday, if no phone
 shipped = int(input("Enter the amount of phones shipped out to another store yesterday, if no phones shipped out "
                     "enter 0: "))
 finalInventory = initialInventory - sold + received - shipped
-print("You should have", finalInventory, "phones today before opening the store.")
-
-physicalInventory = int(input("Enter the total amount of phones you counted physically before opening the store today: "))
+physicalInventory = int(
+    input("Enter the total amount of phones you counted physically before opening the store today: "))
 if finalInventory == physicalInventory:
     print("Perfect inventory!")
-elif physicalInventory > finalInventory:
+while physicalInventory > finalInventory:
     print("You are over", physicalInventory - finalInventory, "phones, make sure you counted properly and entered the "
                                                               "correct amounts above.")
-else:
-    if physicalInventory < finalInventory:
+    physicalInventory = int(input("Enter the total amount of phones you counted physically before opening the store "
+                                  "today: "))
+    while physicalInventory < finalInventory:
         print("You are short", physicalInventory - finalInventory, "phones, make sure you counted properly and "
                                                                    "entered the correct amounts above.")
+        physicalInventory = int(input("Enter the total amount of phones you counted physically before opening the "
+                                      "store "
+                                      "today: "))
+    if finalInventory == physicalInventory:
+        print("Perfect inventory!")
